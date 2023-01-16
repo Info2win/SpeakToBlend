@@ -1,6 +1,6 @@
 import bpy
 
-class STB_PT_(bpy.types.Panel):
+class STB_Panel(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_label = "SpeakToBlend"
