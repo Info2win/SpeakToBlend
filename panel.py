@@ -10,10 +10,13 @@ class STB_Panel(bpy.types.Panel):
         """Defines how the UI will look like."""
 
         layout = self.layout
+
+        #Break layout into 2 rows and 1 column for each row
         row0 = layout.row()
         row1 = layout.row()
         row0_col0 = row0.column()
-        row0_col0.operator()
+        row1_col0 = row1.column()
+
 
 
 
