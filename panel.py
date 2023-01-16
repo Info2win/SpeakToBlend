@@ -1,6 +1,6 @@
 import bpy
 
-class _PT_Panel(bpy.types.Panel):
+class STB_PT_Panel(bpy.types.Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_label = "SpeakToBlend"
@@ -14,7 +14,7 @@ class _PT_Panel(bpy.types.Panel):
         layout.prop(context.scene.SpeakToBlend,"session_token")
 
         #Create Speak Button
-        layout.operator("speak_to_blend",text="Speak")
+        layout.operator("operator.speak_to_blend",text="Speak")
 
 
 

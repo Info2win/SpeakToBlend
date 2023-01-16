@@ -2,7 +2,7 @@ import bpy
 
 class STB_Properties(bpy.types.PropertyGroup):
     session_token: bpy.props.StringProperty(
-        name = "Session Token",
+        name = "Session token",
         description = "Session authentication token provided by ChatGPT"
     )
 def register():
