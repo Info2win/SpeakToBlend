@@ -1,2 +1,2 @@
 # SpeakToBlend
-Craft art by speaking in Blender
+Create art by speaking in Blender
