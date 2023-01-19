@@ -36,7 +36,6 @@ class _OT_SendCommandToChatGPT(bpy.types.Operator):
         # If code starts with 'python' statement, remove the statemnt
         if code.split('\n')[0] == 'python':
             code = code.replace('python','')
-        print(code)
         # Create a temporary file to store the code
         with tempfile.NamedTemporaryFile(suffix='.py', delete=False) as temp:
             temp.write(bytes(code, 'utf-8'))
