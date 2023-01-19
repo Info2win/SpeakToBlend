@@ -1,9 +1,8 @@
 import bpy
 from revChatGPT.ChatGPT import Chatbot
 import speech_recognition as sr
+import tempfile
 
-
-speach = "make 2 cubes next to eachother"
 chatBot = None
 class _OT_SendCommandToChatGPT(bpy.types.Operator):
     """This class is the operator class that sends text prompt to Chatgpt"""
@@ -32,18 +31,20 @@ class _OT_SendCommandToChatGPT(bpy.types.Operator):
         except:
             chatBot.refresh_session()
             solution = chatBot.ask(command)
-        
         code = solution['message'].split('```')[1]
 
+        # If code starts with 'python' statement, remove the statemnt
+        if code.split('\n')[0] == 'python':
+            code.replace('python\n','')
 
-        #Put Code into a Data Block
-        text_block = bpy.data.texts.new(bpy.context.scene.SpeakToBlend.session_token)
-        text_block.write(code)
-
-        #Run Script
-        context = bpy.context.copy()
-        context['edit_text'] = text_block
-        bpy.ops.text.run_script(context)
+        # Create a temporary file to store the code
+        with tempfile.NamedTemporaryFile(suffix='.py', delete=False) as temp:
+            temp.write(bytes(code, 'utf-8'))
+            temp.flush()
+            
+        # Run the code as a Blender script
+        bpy.ops.script.python_file_run(filepath=temp.name)
+        
 
         return {'FINISHED'} 
         

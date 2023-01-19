@@ -24,7 +24,7 @@ bl_info = {
 
 from . import auto_load
 from .utilities import pip_install
-pip_install(['revChatGPT'])
+pip_install(['revChatGPT','SpeechRecognition','PyAudio','temp'])
 auto_load.init()
 
 def register():
